@@ -33,56 +33,63 @@
 	\newpage
 	\section{Introduction}
 	Le jeu de dames est un jeu de société populaire et ancien qui se joue sur un plateau carré avec des cases noires et blanches. Les joueurs déplacent leurs pions diagonalement sur le plateau en essayant de capturer les pions adverses en sautant par-dessus eux. Le but du jeu est de capturer tous les pions de l'adversaire ou de le bloquer de telle sorte qu'il ne peut plus bouger. 
-	\section{Démarche de programmation}
-	\subsection{Diagramme de classe}
+	%\section{Démarche de programmation}
+	%\subsection{Diagramme de classe}
 	\section{Documentation technique}
 	\subsection{La classe main}
 	Le code crée une fenêtre de jeu et permet à l'utilisateur de jouer contre l'IA ou de laisser l'IA jouer contre elle-même.\\
 	Le code commence par définir certaines constantes telles que la taille de la fenêtre, la taille des cases de la grille, les images pour les éléments du jeu, etc. Ensuite, la fonction get row col from mouse  est définie pour déterminer la rangée et la colonne de la case sur laquelle l'utilisateur a cliqué avec la souris. Ensuite, la boucle principale du jeu est démarrée, dans laquelle la logique de jeu est mise à jour à chaque itération. La boucle gère également les événements tels que les clics de souris et la fermeture de la fenêtre.
 	\subsection{La classe Board}
 	 Le code définit une classe Board qui gère la logique du jeu et affiche la grille de jeu.\\
-	 \\
-	 Le constructeur de la classe Board initialise la grille de jeu en appelant la méthode creer grille(). La grille de jeu est stockée sous forme de liste de listes, où chaque élément est soit un objet Piece, soit la valeur 0 pour représenter une case vide. Il y a également des variables pour suivre le nombre de pions et de rois restants pour chaque joueur. \\
-	 \\
-	 La méthode creer cases() dessine la grille de jeu en alternant les cases bleues et blanches. La méthode ajouter pieces sur grille() dessine tous les pions et les rois sur la grille de jeu.\\
-	 \\
-	 La méthode change position sur grille() met à jour la position d'un pion sur la grille en échangeant sa position actuelle avec sa nouvelle position. Si un pion atteint la dernière rangée de la grille, il est promu en un roi. Les rois sont également suivis dans les variables de la classe.\\
-	 \\
-	 La méthode valid moves() retourne un dictionnaire de tous les mouvements valides possibles pour un pion donné. Cette méthode utilise des méthodes privées pour vérifier les mouvements diagonaux des pions, en fonction de la couleur du joueur et de l'état du pion (normal ou roi)
+	 \begin{itemize}
+	 	\item[* ] Le constructeur de la classe Board initialise la grille de jeu en appelant la méthode creer grille(). La grille de jeu est stockée sous forme de liste de listes, où chaque élément est soit un objet Piece, soit la valeur 0 pour représenter une case vide. Il y a également des variables pour suivre le nombre de pions et de rois restants pour chaque joueur. 
+	 	\item[* ] La méthode creer cases() dessine la grille de jeu en alternant les cases bleues et blanches. La méthode ajouter pieces sur grille() dessine tous les pions et les rois sur la grille de jeu.
+	 	\item[* ]  La méthode change position sur grille() met à jour la position d'un pion sur la grille en échangeant sa position actuelle avec sa nouvelle position. Si un pion atteint la dernière rangée de la grille, il est promu en un roi. Les rois sont également suivis dans les variables de la classe.
+	 	\item[* ] La méthode valid moves() retourne un dictionnaire de tous les mouvements valides possibles pour un pion donné. Cette méthode utilise des méthodes privées pour vérifier les mouvements diagonaux des pions, en fonction de la couleur du joueur et de l'état du pion (normal ou roi)
+	 \end{itemize}
+	 
+	 
 	 \subsection{La classe constants}
 	 Cette classe définit quelques constantes de couleur et charge des images pour les couronnes et l'arrière-plan du jeu. La taille de l'écran est également définie, ainsi que le nombre de rangées et de colonnes pour le plateau de jeu.
 	 \subsection{La classe Game}
 	 Cette classe gère la logique du jeu de dames. Elle utilise la bibliothèque Pygame pour afficher le jeu à l'écran.\\
 	 La classe "Game" a plusieurs méthodes :\\
-	 La méthode "init" est appelée lorsque la classe est instanciée. Elle initialise les variables d'instance qui sont utilisées pour suivre l'état du jeu.\\
-	 \\
-	 La méthode "update" met à jour l'affichage du jeu à l'écran. Elle appelle la méthode "ajouter pieces sur grille" de l'objet "board" pour dessiner les pièces sur la grille de jeu. Elle appelle également la méthode "afficher valid moves" pour dessiner les mouvements valides.\\
-	 \\
-	 La méthode "init" initialise les variables d'instance de la classe.\\
-	 \\
-	 La méthode "reset" réinitialise les variables d'instance pour commencer une nouvelle partie.\\
-	 \\
-	 La méthode "winner" retourne le gagnant de la partie.\\
-	 \\
-	 La méthode "choisir piece" est appelée lorsque le joueur choisit une pièce. Elle vérifie si la pièce sélectionnée appartient au joueur actuel, et si c'est le cas, elle stocke cette pièce dans la variable "selected" et calcule les mouvements valides pour cette pièce.\\
-	 \\
-	 La méthode " is piece choisie" vérifie si une pièce a été sélectionnée.\\
-	 \\
-	 La méthode " is moved" est appelée lorsque le joueur déplace une pièce. Elle vérifie si la case de destination est valide et déplace la pièce sélectionnée. Si une pièce a été sautée, elle est supprimée de la grille.\\
-	 \\
-	 La méthode "changer tour" change le tour du joueur.\\
-	 \\
-	 La méthode "afficher valid moves" dessine des cercles verts sur les cases de destination valides pour la pièce sélectionnée.\\
-	 \\
-	 La méthode "ai move" est appelée lorsqu'un mouvement est effectué par l'IA. Elle met à jour l'état de la grille.\\
-	 \\
-	 La méthode "get board" retourne l'objet "board" de la classe "Game".
+	 \begin{itemize}
+	 	\item[* ]  La méthode "init" est appelée lorsque la classe est instanciée. Elle initialise les variables d'instance qui sont utilisées pour suivre l'état du jeu.
+	 	\item[* ] La méthode "update" met à jour l'affichage du jeu à l'écran. Elle appelle la méthode "ajouter pieces sur grille" de l'objet "board" pour dessiner les pièces sur la grille de jeu. Elle appelle également la méthode "afficher valid moves" pour dessiner les mouvements valides.
+	 	\item[* ] La méthode "init" initialise les variables d'instance de la classe.
+	 	\item[* ] La méthode "reset" réinitialise les variables d'instance pour commencer une nouvelle partie.
+	 	\item[* ]  La méthode "winner" retourne le gagnant de la partie.
+	 	\item[* ]  La méthode "choisir piece" est appelée lorsque le joueur choisit une pièce. Elle vérifie si la pièce sélectionnée appartient au joueur actuel, et si c'est le cas, elle stocke cette pièce dans la variable "selected" et calcule les mouvements valides pour cette pièce.
+	 	\item[* ] La méthode " is piece choisie" vérifie si une pièce a été sélectionnée.
+	 	\item[* ] La méthode " is moved" est appelée lorsque le joueur déplace une pièce. Elle vérifie si la case de destination est valide et déplace la pièce sélectionnée. Si une pièce a été sautée, elle est supprimée de la grille.
+	 	\item[* ]  La méthode "changer tour" change le tour du joueur.
+	 	\item[* ] La méthode "afficher valid moves" dessine des cercles verts sur les cases de destination valides pour la pièce sélectionnée.
+	 	\item[* ] La méthode "ai move" est appelée lorsqu'un mouvement est effectué par l'IA. Elle met à jour l'état de la grille.
+	 	\item[* ]  La méthode "get board" retourne l'objet "board" de la classe "Game".
+	 	
+	 \end{itemize}
+
 	 \subsection{La classe algorithm}
-	 Cette classe contient une fonction minimax qui utilise l'algorithme de minimax pour trouver le meilleur coup pour un joueur donné. La fonction prend en entrée la position actuelle, la profondeur de recherche et un booléen max player indiquant si le joueur est le joueur maximisant ou minimisant. La fonction renvoie une paire (valeur, coup) où la valeur est la valeur d'utilité de la position et le coup est le meilleur coup trouvé.\\
-	 \\
-	 La fonction utilise une fonction auxiliaire get all moves pour générer tous les coups possibles pour un joueur donné. La fonction simulate move est également utilisée pour simuler un coup sur une copie temporaire du plateau de jeu.
+	 Cette classe contient une fonction minimax qui utilise l'algorithme de minimax pour trouver le meilleur coup pour un joueur donné.
+	 \begin{itemize}
+	 	\item[* ] La fonction prend en entrée la position actuelle, la profondeur de recherche et un booléen max player indiquant si le joueur est le joueur maximisant ou minimisant. La fonction renvoie une paire (valeur, coup) où la valeur est la valeur d'utilité de la position et le coup est le meilleur coup trouvé.
+	 	\item[* ] La fonction utilise une fonction auxiliaire get all moves pour générer tous les coups possibles pour un joueur donné. La fonction simulate move est également utilisée pour simuler un coup sur une copie temporaire du plateau de jeu.
+	 \end{itemize}
+	  
+	 
 	 \subsection{La classe Piece}
-	 Cette classe représente une pièce de jeu de dames sur le plateau. Elle possède des attributs tels que row, col, color et king (si la pièce est devenue une dame ou non). Elle possède également des méthodes telles que calc pos (qui calcule la position de la pièce sur le plateau), get king (qui définit l'attribut king à True), create piece (qui dessine la pièce sur le plateau en utilisant la bibliothèque Pygame) et move piece (qui met à jour la ligne et la colonne de la pièce et recalcule sa position).
+	  Cette classe représente une pièce de jeu de dames sur le plateau. Elle possède des attributs tels que row, col, color et king (si la pièce est devenue une dame ou non). Elle possède également des méthodes telles que:
+	 \begin{itemize}
+	 	\item[* ] calc pos qui calcule la position de la pièce sur le plateau.
+	 	\item[* ] get king qui définit l'attribut king à True.
+	 	\item[* ] is king :Cette méthode retourne la valeur de l'attribut "king" de la pièce. Si "king" est True, cela signifie que la pièce est une dame.
+	 	\item[* ] create piece qui dessine la pièce sur le plateau en utilisant la bibliothèque Pygame.
+	 	\item[* ] move piece qui met à jour la ligne et la colonne de la pièce et recalcule sa position.
+	 \end{itemize}
+	 
+	 
+	
 	 \section{Guide d'utilisation}
 	 	%\begin{figure}[!hbtp]
 %	 	\centering

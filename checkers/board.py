@@ -6,11 +6,12 @@ from .piece import Piece
 class Board:
     def __init__(self):
         self.board = []
-        self.creer_grille()
         self.red_kings = 0
         self.blue_kings = 0
         self.red_left = 12
         self.blue_left = 12
+        self.creer_grille()
+
 
     def creer_cases(self, window):
         window.fill(WHITE)
@@ -224,13 +225,29 @@ class Board:
         return moves
 
     def winner(self):
+        
         if self.red_left <= 0:
             return BLUE
         elif self.blue_left <= 0:
             return RED
+        return None
            
-    def evaluate(self):
-        return self.red_left - self.blue_left + (self.red_kings * 0.5 - self.blue_kings * 0.5)  
+    def evaluate_level_one(self):
+        return self.red_left - self.blue_left  
+
+    def evaluate_level_three(self):
+        return self.red_left - self.blue_left + (0.5 * self.red_kings - 0.5 * self.blue_kings)
+    
+    def evaluate_level_two(self):
+        center_squares = [(3, 4), (4, 3), (3, 5), (5, 3), (4, 5), (5, 4), (4, 4), (5, 5)]
+        score = 0
+        for row, col in center_squares:
+            piece = self.get_piece(row, col)
+            if piece != 0 and not piece.is_king() :
+                score += 1
+            elif piece != 0 and piece.is_king():
+                score += 2
+        return score
         
     
     def _direction(self, step):
